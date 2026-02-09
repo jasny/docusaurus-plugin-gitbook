@@ -5,19 +5,6 @@
 import type { ReactNode } from 'react';
 
 /**
- * Hint styles
- */
-export type HintStyle = 'info' | 'warning' | 'danger' | 'success';
-
-/**
- * Hint component props
- */
-export interface HintProps {
-  style: HintStyle;
-  children: ReactNode;
-}
-
-/**
  * Tabs component props
  */
 export interface TabsProps {

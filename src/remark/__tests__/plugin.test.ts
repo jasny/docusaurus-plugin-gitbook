@@ -18,49 +18,48 @@ function getAst(markdown: string): Promise<Root> {
 
 describe('remarkGitBook plugin', () => {
   describe('hint blocks', () => {
-    it('should transform info hint', async () => {
+    it('should transform info hint to Admonition', async () => {
       const markdown = `{% hint style="info" %}
 This is an info hint.
 {% endhint %}`;
 
       const tree = await getAst(markdown);
-
-      // Find the transformed JSX element
-      const hasGitBookHint = JSON.stringify(tree).includes('GitBookHint');
-      expect(hasGitBookHint).toBe(true);
+      const str = JSON.stringify(tree);
+      expect(str).toContain('Admonition');
+      expect(str).toContain('"type","value":"info"');
     });
 
-    it('should transform warning hint', async () => {
+    it('should transform warning hint to Admonition', async () => {
       const markdown = `{% hint style="warning" %}
 Be careful!
 {% endhint %}`;
 
       const tree = await getAst(markdown);
       const str = JSON.stringify(tree);
-      expect(str).toContain('GitBookHint');
-      expect(str).toContain('warning');
+      expect(str).toContain('Admonition');
+      expect(str).toContain('"type","value":"warning"');
     });
 
-    it('should transform danger hint', async () => {
+    it('should transform danger hint to Admonition', async () => {
       const markdown = `{% hint style="danger" %}
 Danger zone!
 {% endhint %}`;
 
       const tree = await getAst(markdown);
       const str = JSON.stringify(tree);
-      expect(str).toContain('GitBookHint');
-      expect(str).toContain('danger');
+      expect(str).toContain('Admonition');
+      expect(str).toContain('"type","value":"danger"');
     });
 
-    it('should transform success hint', async () => {
+    it('should transform success hint to tip Admonition', async () => {
       const markdown = `{% hint style="success" %}
 Success!
 {% endhint %}`;
 
       const tree = await getAst(markdown);
       const str = JSON.stringify(tree);
-      expect(str).toContain('GitBookHint');
-      expect(str).toContain('success');
+      expect(str).toContain('Admonition');
+      expect(str).toContain('"type","value":"tip"');
     });
   });
 
@@ -202,8 +201,8 @@ This should be skipped.
       processor.runSync(tree);
       const str = JSON.stringify(tree);
 
-      // The hint should not be transformed
-      expect(str).not.toContain('GitBookHint');
+      // The hint should not be transformed - no Admonition JSX element created
+      expect(str).not.toContain('mdxJsxFlowElement');
     });
   });
 });

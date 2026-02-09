@@ -19,9 +19,9 @@ export interface RemarkGitBookOptions {
   blocks?: Record<string, boolean>;
 }
 
-// All GitBook components that might be used
+// All components that might be used (GitBook custom + Docusaurus built-ins)
 const ALL_GITBOOK_COMPONENTS = [
-  'GitBookHint',
+  'Admonition',
   'GitBookTabs',
   'GitBookTab',
   'GitBookStepper',

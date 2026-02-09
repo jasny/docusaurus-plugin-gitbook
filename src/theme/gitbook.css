@@ -9,7 +9,7 @@
  *
  * Or override variables in your own CSS:
  *   :root {
- *     --gitbook-hint-info-bg: #e7f3ff;
+ *     --gitbook-primary: #0969da;
  *   }
  */
 
@@ -21,23 +21,6 @@
   /* Primary accent color */
   --gitbook-primary: #0969da;
   --gitbook-primary-hover: #0756b3;
-
-  /* Hint block colors */
-  --gitbook-hint-info-bg: #e7f3ff;
-  --gitbook-hint-info-border: #0969da;
-  --gitbook-hint-info-color: inherit;
-
-  --gitbook-hint-warning-bg: #fff8e6;
-  --gitbook-hint-warning-border: #9a6700;
-  --gitbook-hint-warning-color: inherit;
-
-  --gitbook-hint-danger-bg: #ffebe9;
-  --gitbook-hint-danger-border: #cf222e;
-  --gitbook-hint-danger-color: inherit;
-
-  --gitbook-hint-success-bg: #dafbe1;
-  --gitbook-hint-success-border: #1a7f37;
-  --gitbook-hint-success-color: inherit;
 
   /* Tab colors */
   --gitbook-tabs-border: #e0e0e0;
@@ -113,19 +96,6 @@
   /* Primary accent color */
   --gitbook-primary: #58a6ff;
   --gitbook-primary-hover: #79b8ff;
-
-  /* Hint block colors */
-  --gitbook-hint-info-bg: #1c3a5e;
-  --gitbook-hint-info-bg-dark: #1c3a5e;
-
-  --gitbook-hint-warning-bg: #4d3800;
-  --gitbook-hint-warning-bg-dark: #4d3800;
-
-  --gitbook-hint-danger-bg: #4d0f0f;
-  --gitbook-hint-danger-bg-dark: #4d0f0f;
-
-  --gitbook-hint-success-bg: #0f4d1a;
-  --gitbook-hint-success-bg-dark: #0f4d1a;
 
   /* Tab colors */
   --gitbook-tabs-border: #444;
