@@ -74,7 +74,7 @@ src/
 
 ## Implementation Status
 
-See `_plan/` for detailed task files. Tasks are in `todo/`, `progress/`, or `done/`.
+See `.claude/plan/` for detailed task files. Tasks are in `todo/`, `progress/`, or `done/`.
 
 **Completed:**
 - Parser infrastructure (tokenizer, parser)
@@ -93,7 +93,7 @@ See `_plan/` for detailed task files. Tasks are in `todo/`, `progress/`, or `don
 
 ## GitBook Block Syntax Reference
 
-See `_skills/gitbook.md` for comprehensive documentation on GitBook block syntax.
+See `.claude/skills/gitbook.md` for comprehensive documentation on GitBook block syntax.
 
 ### Remark-transformed blocks ({% tag %} syntax):
 - `{% hint style="info|warning|danger|success" %}...{% endhint %}`
