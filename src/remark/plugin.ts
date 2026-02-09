@@ -6,6 +6,7 @@ import type { Root, Content } from 'mdast';
 import type { Plugin } from 'unified';
 import { visit } from 'unist-util-visit';
 import { parse, type GitBookBlock } from '../parser/index.js';
+import { tokenize, isTextSegment } from '../parser/tokenizer.js';
 import { getTransformer, hasTransformer } from './transformers/index.js';
 import { containsGitBookSyntax, getTextContent } from './utils.js';
 
@@ -142,7 +143,11 @@ function parseMarkdownContent(content: string): Content[] {
 }
 
 /**
- * Collect consecutive nodes that form a GitBook block
+ * Collect consecutive nodes that form a GitBook block.
+ *
+ * Uses the actual tokenizer to track depth so that self-closing tags
+ * (e.g. {% embed %}, {% include %}) are handled correctly — they don't
+ * increment depth and the function stops after consuming just that node.
  */
 function collectBlockNodes(
   parent: { children: Content[] },
@@ -151,34 +156,37 @@ function collectBlockNodes(
   const children = parent.children;
   let text = '';
   let endIndex = startIndex;
-  let depth = 0;
-  let foundStart = false;
 
   for (let i = startIndex; i < children.length; i++) {
     const node = children[i];
     const nodeText = getTextContent(node);
-    text += nodeText + '\n';
-
-    // Count open/close tags
-    const opens = (nodeText.match(/\{%\s*(?!end)\w+/g) || []).length;
-    const closes = (nodeText.match(/\{%\s*end\w+/g) || []).length;
-
-    if (opens > 0) {
-      foundStart = true;
-      depth += opens;
-    }
-    depth -= closes;
-
+    text += (i > startIndex ? '\n' : '') + nodeText;
     endIndex = i;
 
-    if (foundStart && depth <= 0) {
+    // Use the tokenizer to properly track depth —
+    // self-closing tokens don't affect depth.
+    const segments = tokenize(text);
+    let depth = 0;
+    let hasTag = false;
+
+    for (const segment of segments) {
+      if (!isTextSegment(segment)) {
+        hasTag = true;
+        if (segment.type === 'open') depth++;
+        else if (segment.type === 'close') depth--;
+        // self-closing doesn't change depth
+      }
+    }
+
+    if (hasTag && depth <= 0) {
       break;
     }
   }
 
-  if (!foundStart) {
-    return null;
-  }
+  // Verify we actually collected GitBook syntax
+  const segments = tokenize(text.trim());
+  const hasTag = segments.some((s) => !isTextSegment(s));
+  if (!hasTag) return null;
 
   return { text: text.trim(), endIndex };
 }
