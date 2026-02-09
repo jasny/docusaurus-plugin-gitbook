@@ -6,7 +6,7 @@
 
 import React from 'react';
 import type { ReactElement } from 'react';
-import type { UpdateProps } from '../types.js';
+import type { UpdateProps } from '../../theme-types.js';
 import styles from './styles.module.css';
 
 export default function GitBookUpdate({

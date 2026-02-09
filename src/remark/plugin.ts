@@ -19,6 +19,71 @@ export interface RemarkGitBookOptions {
   blocks?: Record<string, boolean>;
 }
 
+// All GitBook components that might be used
+const ALL_GITBOOK_COMPONENTS = [
+  'GitBookHint',
+  'GitBookTabs',
+  'GitBookTab',
+  'GitBookStepper',
+  'GitBookStep',
+  'GitBookColumns',
+  'GitBookColumn',
+  'GitBookCodeBlock',
+  'GitBookUpdates',
+  'GitBookUpdate',
+  'GitBookEmbed',
+  'GitBookFile',
+  'GitBookInclude',
+  'GitBookOpenAPI',
+  'GitBookButton',
+  'GitBookIcon',
+  'GitBookCards',
+  'GitBookCard',
+  'GitBookExpression',
+];
+
+// Set to track which components are used in the current document
+let usedComponents: Set<string>;
+
+/**
+ * Create an mdxjsEsm node for imports
+ */
+function createImportNode(componentNames: string[]): Content {
+  const imports = componentNames
+    .map((name) => `import ${name} from '@theme/${name}';`)
+    .join('\n');
+
+  return {
+    type: 'mdxjsEsm',
+    value: imports,
+    data: {
+      estree: {
+        type: 'Program',
+        body: componentNames.map((name) => ({
+          type: 'ImportDeclaration',
+          specifiers: [
+            {
+              type: 'ImportDefaultSpecifier',
+              local: { type: 'Identifier', name },
+            },
+          ],
+          source: { type: 'Literal', value: `@theme/${name}` },
+        })),
+        sourceType: 'module',
+      },
+    },
+  } as Content;
+}
+
+/**
+ * Track component usage
+ */
+export function trackComponent(name: string): void {
+  if (usedComponents) {
+    usedComponents.add(name);
+  }
+}
+
 /**
  * Process a GitBook block into MDAST nodes
  */
@@ -127,6 +192,9 @@ const remarkGitBook: Plugin<[RemarkGitBookOptions?], Root> = (
   const { blocks: enabledBlocks } = options;
 
   return (tree: Root) => {
+    // Initialize component tracking for this document
+    usedComponents = new Set<string>();
+
     // First pass: find and mark nodes containing GitBook syntax
     const nodesToProcess: Array<{
       parent: Root | Content;
@@ -197,6 +265,12 @@ const remarkGitBook: Plugin<[RemarkGitBookOptions?], Root> = (
         );
       }
     }
+
+    // Add imports for all GitBook components at the beginning of the document
+    // This ensures components from both remark and rehype transformations are available
+    // Tree-shaking will remove unused imports in production
+    const importNode = createImportNode(ALL_GITBOOK_COMPONENTS);
+    tree.children.unshift(importNode);
   };
 };
 

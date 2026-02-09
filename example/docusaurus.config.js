@@ -1,6 +1,7 @@
 // @ts-check
 
 import { themes as prismThemes } from 'prism-react-renderer';
+import { remarkGitBook, rehypeGitBook } from 'docusaurus-plugin-gitbook';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -19,6 +20,15 @@ const config = {
     locales: ['en'],
   },
 
+  markdown: {
+    format: 'md',
+    preprocessor: ({ filePath, fileContent }) => {
+      // Temporarily escape GitBook syntax to prevent MDX from parsing it
+      // The remark plugin will handle the actual transformation
+      return fileContent;
+    },
+  },
+
   plugins: ['docusaurus-plugin-gitbook'],
 
   presets: [
@@ -28,6 +38,8 @@ const config = {
       ({
         docs: {
           sidebarPath: './sidebars.js',
+          beforeDefaultRemarkPlugins: [remarkGitBook],
+          rehypePlugins: [rehypeGitBook],
         },
         theme: {
           customCss: './src/css/custom.css',

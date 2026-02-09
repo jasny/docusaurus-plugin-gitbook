@@ -8,7 +8,8 @@
     "lib"
   ],
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && yarn copy-assets",
+    "copy-assets": "find src -name '*.css' -exec sh -c 'mkdir -p lib/$(dirname ${1#src/}) && cp $1 lib/${1#src/}' _ {} \\;",
     "watch": "tsc --watch",
     "clean": "rm -rf lib",
     "prepublishOnly": "yarn clean && yarn build",

@@ -6,7 +6,7 @@
 
 import React from 'react';
 import type { ReactElement } from 'react';
-import type { ColumnsProps } from '../types.js';
+import type { ColumnsProps } from '../../theme-types.js';
 import styles from './styles.module.css';
 
 export default function GitBookColumns({ children }: ColumnsProps): ReactElement {

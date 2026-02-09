@@ -6,7 +6,7 @@
 
 import React from 'react';
 import type { ReactElement } from 'react';
-import type { CardProps } from '../types.js';
+import type { CardProps } from '../../theme-types.js';
 import styles from './styles.module.css';
 
 export default function GitBookCard({

@@ -6,7 +6,7 @@
 
 import React from 'react';
 import type { ReactElement } from 'react';
-import type { FileProps } from '../types.js';
+import type { FileProps } from '../../theme-types.js';
 import styles from './styles.module.css';
 
 const FILE_ICONS: Record<string, string> = {

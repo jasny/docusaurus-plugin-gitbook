@@ -4,6 +4,7 @@
 
 import type { Content, Paragraph, Text } from 'mdast';
 import type { MdxJsxFlowElement, MdxJsxAttribute } from 'mdast-util-mdx-jsx';
+import { trackComponent } from './plugin.js';
 
 /**
  * Create an MDX JSX element node
@@ -13,6 +14,9 @@ export function createMdxJsxElement(
   attributes: Record<string, string>,
   children: Content[] = []
 ): MdxJsxFlowElement {
+  // Track this component for import generation
+  trackComponent(name);
+
   const mdxAttributes: MdxJsxAttribute[] = Object.entries(attributes).map(
     ([key, value]) => ({
       type: 'mdxJsxAttribute',

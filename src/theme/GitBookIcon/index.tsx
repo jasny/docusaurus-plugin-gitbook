@@ -6,7 +6,7 @@
 
 import React from 'react';
 import type { ReactElement } from 'react';
-import type { IconProps } from '../types.js';
+import type { IconProps } from '../../theme-types.js';
 import styles from './styles.module.css';
 
 // Simple emoji fallback for common Font Awesome icons

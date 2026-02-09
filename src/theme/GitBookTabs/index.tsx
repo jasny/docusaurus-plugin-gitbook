@@ -6,7 +6,7 @@
 
 import React, { useState, Children, isValidElement, cloneElement } from 'react';
 import type { ReactElement } from 'react';
-import type { TabsProps } from '../types.js';
+import type { TabsProps } from '../../theme-types.js';
 import styles from './styles.module.css';
 
 interface TabInfo {

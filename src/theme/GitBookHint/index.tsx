@@ -5,7 +5,7 @@
  */
 
 import React from 'react';
-import type { HintProps, HintStyle } from '../types.js';
+import type { HintProps, HintStyle } from '../../theme-types.js';
 import styles from './styles.module.css';
 
 const STYLE_ICONS: Record<HintStyle, string> = {

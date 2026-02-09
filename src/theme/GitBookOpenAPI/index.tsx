@@ -9,7 +9,7 @@
 
 import React from 'react';
 import type { ReactElement } from 'react';
-import type { OpenAPIProps } from '../types.js';
+import type { OpenAPIProps } from '../../theme-types.js';
 import styles from './styles.module.css';
 
 // HTTP method color mapping

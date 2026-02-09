@@ -6,7 +6,7 @@
 
 import React from 'react';
 import type { ReactElement } from 'react';
-import type { EmbedProps } from '../types.js';
+import type { EmbedProps } from '../../theme-types.js';
 import styles from './styles.module.css';
 
 interface EmbedInfo {

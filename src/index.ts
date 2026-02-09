@@ -14,7 +14,7 @@ export type { RehypeGitBookOptions } from './rehype/index.js';
 export * from './parser/index.js';
 
 // Re-export theme types
-export * from './theme/types.js';
+export * from './theme-types.js';
 
 /**
  * Plugin options

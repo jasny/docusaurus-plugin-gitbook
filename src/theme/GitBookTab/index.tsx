@@ -5,7 +5,7 @@
  */
 
 import React from 'react';
-import type { TabProps } from '../types.js';
+import type { TabProps } from '../../theme-types.js';
 import styles from './styles.module.css';
 
 export interface GitBookTabProps extends TabProps {

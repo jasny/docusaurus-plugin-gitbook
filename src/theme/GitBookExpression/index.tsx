@@ -10,7 +10,7 @@
 
 import React from 'react';
 import type { ReactElement } from 'react';
-import type { ExpressionProps } from '../types.js';
+import type { ExpressionProps } from '../../theme-types.js';
 import styles from './styles.module.css';
 
 export default function GitBookExpression({
