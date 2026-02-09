@@ -6,13 +6,9 @@ Embed blocks allow you to embed external content like YouTube videos, CodePen, a
 
 {% embed url="https://www.youtube.com/watch?v=dQw4w9WgXcQ" %}
 
-## Vimeo Video
+## CodePen - Pen Settings
 
-{% embed url="https://vimeo.com/123456789" %}
-
-## CodePen
-
-{% embed url="https://codepen.io/pen/example" %}
+{% embed url="https://codepen.io/team/codepen/pen/PNaGbb" %}
 
 ## Syntax
 
@@ -25,9 +21,9 @@ Embed blocks allow you to embed external content like YouTube videos, CodePen, a
 The embed component automatically detects and properly embeds content from:
 
 - **YouTube** - Video embeds
-- **Vimeo** - Video embeds
 - **CodePen** - Code demos
 - **Loom** - Video recordings
+- **Vimeo** - Video embeds
 - **Generic URLs** - Displayed as iframe with link
 
 ## Notes

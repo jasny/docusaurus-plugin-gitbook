@@ -46,15 +46,16 @@ function parseEmbedUrl(url: string): EmbedInfo {
       }
     }
 
-    // CodePen
+    // CodePen - handles /user/pen/ID and /team/name/pen/ID
     if (hostname === 'codepen.io') {
       const parts = parsed.pathname.split('/');
-      if (parts.length >= 4) {
-        const user = parts[1];
-        const penId = parts[3];
+      const penIndex = parts.indexOf('pen');
+      if (penIndex !== -1 && penIndex + 1 < parts.length) {
+        const penId = parts[penIndex + 1];
+        const userPath = parts.slice(1, penIndex).join('/');
         return {
           type: 'codepen',
-          embedUrl: `https://codepen.io/${user}/embed/${penId}?default-tab=result`,
+          embedUrl: `https://codepen.io/${userPath}/embed/${penId}?default-tab=result`,
         };
       }
     }
