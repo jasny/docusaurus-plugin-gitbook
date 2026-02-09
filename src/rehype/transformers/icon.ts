@@ -1,7 +1,8 @@
 /**
  * Icon transformer
  *
- * Transforms <i class="fa-xxx"> into GitBookIcon component
+ * Transforms <i class="fa-xxx"> into FAIcon component
+ * which renders Font Awesome icons via CSS classes.
  */
 
 import type { Element } from 'hast';
@@ -17,7 +18,7 @@ function isIconElement(element: Element): boolean {
   if (!className) return false;
 
   const classes = Array.isArray(className) ? className : [className];
-  return classes.some((c) => String(c).startsWith('fa-'));
+  return classes.some((c) => String(c).startsWith('fa-') || String(c) === 'fa');
 }
 
 /**
@@ -29,20 +30,20 @@ function extractIconClasses(classes: string[]): string {
 }
 
 /**
- * Transform icon element to GitBookIcon
+ * Transform icon element to FAIcon
  */
 const iconTransformer: RehypeTransformer = (element: Element): Element | null => {
   const className = element.properties?.className;
   const classes = Array.isArray(className) ? className.map(String) : [String(className)];
 
-  const iconName = extractIconClasses(classes);
+  const icon = extractIconClasses(classes);
 
   // Create MDX JSX element
   const mdxElement: Element = {
     type: 'element',
-    tagName: 'GitBookIcon',
+    tagName: 'FAIcon',
     properties: {
-      name: iconName,
+      icon,
     },
     children: [],
   };

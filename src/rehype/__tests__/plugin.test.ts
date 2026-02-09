@@ -64,7 +64,7 @@ describe('rehypeGitBook plugin', () => {
       const tree = getAst(html);
       const str = JSON.stringify(tree);
 
-      expect(str).toContain('GitBookIcon');
+      expect(str).toContain('FAIcon');
       // The transformer preserves all fa- classes
       expect(str).toContain('fa-brands fa-github');
     });
@@ -74,7 +74,7 @@ describe('rehypeGitBook plugin', () => {
       const tree = getAst(html);
       const str = JSON.stringify(tree);
 
-      expect(str).toContain('GitBookIcon');
+      expect(str).toContain('FAIcon');
       // The transformer preserves all fa- classes
       expect(str).toContain('fa-solid fa-check');
     });
@@ -84,7 +84,7 @@ describe('rehypeGitBook plugin', () => {
       const tree = getAst(html);
       const str = JSON.stringify(tree);
 
-      expect(str).not.toContain('GitBookIcon');
+      expect(str).not.toContain('FAIcon');
     });
   });
 

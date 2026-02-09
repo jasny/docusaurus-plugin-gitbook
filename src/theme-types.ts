@@ -116,10 +116,10 @@ export interface ButtonProps {
 }
 
 /**
- * Icon component props
+ * FAIcon component props
  */
-export interface IconProps {
-  name: string;
+export interface FAIconProps {
+  icon: string;
 }
 
 /**

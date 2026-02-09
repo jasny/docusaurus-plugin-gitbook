@@ -36,7 +36,7 @@ const ALL_GITBOOK_COMPONENTS = [
   'GitBookInclude',
   'GitBookOpenAPI',
   'GitBookButton',
-  'GitBookIcon',
+  'FAIcon',
   'GitBookCards',
   'GitBookCard',
   'GitBookExpression',
