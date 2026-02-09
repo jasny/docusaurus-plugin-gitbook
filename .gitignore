@@ -20,6 +20,12 @@ node_modules
 lib/
 dist/
 
+# Example site build artifacts
+example/.docusaurus/
+example/build/
+example/.yarn/
+example/node_modules/
+
 # IDE
 .idea/
 .vscode/
