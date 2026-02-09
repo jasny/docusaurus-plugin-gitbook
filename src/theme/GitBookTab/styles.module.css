@@ -1,0 +1,15 @@
+/**
+ * GitBook Tab styles
+ */
+
+.tabPanel {
+  padding: 1rem 0;
+}
+
+.tabPanel > *:first-child {
+  margin-top: 0;
+}
+
+.tabPanel > *:last-child {
+  margin-bottom: 0;
+}

@@ -1,0 +1,68 @@
+/**
+ * GitBook Update styles
+ */
+
+.update {
+  display: flex;
+  position: relative;
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 1rem;
+}
+
+.dot {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+  background-color: var(--gitbook-update-dot, #0969da);
+  flex-shrink: 0;
+}
+
+.line {
+  width: 2px;
+  flex: 1;
+  background-color: var(--gitbook-update-line, #e0e0e0);
+  margin-top: 0.5rem;
+}
+
+.update:last-child .line {
+  display: none;
+}
+
+.content {
+  flex: 1;
+  padding-bottom: 1.5rem;
+}
+
+.date {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--gitbook-update-date-color, #666);
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.body > *:first-child {
+  margin-top: 0;
+}
+
+.body > *:last-child {
+  margin-bottom: 0;
+}
+
+/* Dark mode */
+:global([data-theme='dark']) .dot {
+  background-color: var(--gitbook-update-dot-dark, #58a6ff);
+}
+
+:global([data-theme='dark']) .line {
+  background-color: var(--gitbook-update-line-dark, #444);
+}
+
+:global([data-theme='dark']) .date {
+  color: var(--gitbook-update-date-color-dark, #aaa);
+}

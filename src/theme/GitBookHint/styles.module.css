@@ -1,0 +1,74 @@
+/**
+ * GitBook Hint styles
+ */
+
+.hint {
+  display: flex;
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 0.5rem;
+  border-left: 4px solid;
+}
+
+.icon {
+  flex-shrink: 0;
+  margin-right: 0.75rem;
+  font-size: 1.25rem;
+}
+
+.content {
+  flex: 1;
+}
+
+.content > *:first-child {
+  margin-top: 0;
+}
+
+.content > *:last-child {
+  margin-bottom: 0;
+}
+
+/* Info style */
+.info {
+  background-color: var(--gitbook-hint-info-bg, #e7f3ff);
+  border-color: var(--gitbook-hint-info-border, #0969da);
+  color: var(--gitbook-hint-info-color, inherit);
+}
+
+/* Warning style */
+.warning {
+  background-color: var(--gitbook-hint-warning-bg, #fff8e6);
+  border-color: var(--gitbook-hint-warning-border, #9a6700);
+  color: var(--gitbook-hint-warning-color, inherit);
+}
+
+/* Danger style */
+.danger {
+  background-color: var(--gitbook-hint-danger-bg, #ffebe9);
+  border-color: var(--gitbook-hint-danger-border, #cf222e);
+  color: var(--gitbook-hint-danger-color, inherit);
+}
+
+/* Success style */
+.success {
+  background-color: var(--gitbook-hint-success-bg, #dafbe1);
+  border-color: var(--gitbook-hint-success-border, #1a7f37);
+  color: var(--gitbook-hint-success-color, inherit);
+}
+
+/* Dark mode */
+:global([data-theme='dark']) .info {
+  background-color: var(--gitbook-hint-info-bg-dark, #1c3a5e);
+}
+
+:global([data-theme='dark']) .warning {
+  background-color: var(--gitbook-hint-warning-bg-dark, #4d3800);
+}
+
+:global([data-theme='dark']) .danger {
+  background-color: var(--gitbook-hint-danger-bg-dark, #4d0f0f);
+}
+
+:global([data-theme='dark']) .success {
+  background-color: var(--gitbook-hint-success-bg-dark, #0f4d1a);
+}

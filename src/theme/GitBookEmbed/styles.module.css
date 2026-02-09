@@ -1,0 +1,37 @@
+/**
+ * GitBook Embed styles
+ */
+
+.embed {
+  margin: 1rem 0;
+  position: relative;
+}
+
+.iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: none;
+  border-radius: 0.5rem;
+  background-color: var(--gitbook-embed-bg, #f5f5f5);
+}
+
+.link {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--gitbook-embed-link-color, #0969da);
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+/* Dark mode */
+:global([data-theme='dark']) .iframe {
+  background-color: var(--gitbook-embed-bg-dark, #2a2a2a);
+}
+
+:global([data-theme='dark']) .link {
+  color: var(--gitbook-embed-link-color-dark, #58a6ff);
+}

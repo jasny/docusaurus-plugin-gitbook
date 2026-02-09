@@ -1,0 +1,57 @@
+/**
+ * GitBook Tabs styles
+ */
+
+.tabs {
+  margin: 1rem 0;
+}
+
+.tabList {
+  display: flex;
+  border-bottom: 1px solid var(--gitbook-tabs-border, #e0e0e0);
+  margin-bottom: 0;
+}
+
+.tab {
+  padding: 0.75rem 1rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--gitbook-tab-color, #666);
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.tab:hover {
+  color: var(--gitbook-tab-hover-color, #333);
+}
+
+.tab.active {
+  color: var(--gitbook-tab-active-color, #0969da);
+  border-bottom-color: var(--gitbook-tab-active-border, #0969da);
+}
+
+.tabPanels {
+  padding: 0;
+}
+
+/* Dark mode */
+:global([data-theme='dark']) .tabList {
+  border-color: var(--gitbook-tabs-border-dark, #444);
+}
+
+:global([data-theme='dark']) .tab {
+  color: var(--gitbook-tab-color-dark, #aaa);
+}
+
+:global([data-theme='dark']) .tab:hover {
+  color: var(--gitbook-tab-hover-color-dark, #ddd);
+}
+
+:global([data-theme='dark']) .tab.active {
+  color: var(--gitbook-tab-active-color-dark, #58a6ff);
+  border-bottom-color: var(--gitbook-tab-active-border-dark, #58a6ff);
+}

@@ -1,0 +1,51 @@
+/**
+ * GitBook Card styles
+ */
+
+.card {
+  display: block;
+  padding: 1.5rem;
+  border: 1px solid var(--gitbook-card-border, #e0e0e0);
+  border-radius: 0.5rem;
+  background-color: var(--gitbook-card-bg, #fff);
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-color: var(--gitbook-card-hover-border, #0969da);
+}
+
+.title {
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  color: var(--gitbook-card-title-color, #0969da);
+}
+
+.content {
+  font-size: 0.9rem;
+  color: var(--gitbook-card-content-color, #666);
+}
+
+/* Dark mode */
+:global([data-theme='dark']) .card {
+  border-color: var(--gitbook-card-border-dark, #444);
+  background-color: var(--gitbook-card-bg-dark, #2a2a2a);
+}
+
+:global([data-theme='dark']) .card:hover {
+  border-color: var(--gitbook-card-hover-border-dark, #58a6ff);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+:global([data-theme='dark']) .title {
+  color: var(--gitbook-card-title-color-dark, #58a6ff);
+}
+
+:global([data-theme='dark']) .content {
+  color: var(--gitbook-card-content-color-dark, #aaa);
+}

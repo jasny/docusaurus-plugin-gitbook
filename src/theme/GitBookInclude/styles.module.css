@@ -1,0 +1,77 @@
+/**
+ * GitBook Include styles
+ */
+
+.include {
+  display: flex;
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 0.5rem;
+  border: 1px dashed var(--gitbook-include-border, #e0e0e0);
+  background-color: var(--gitbook-include-bg, #f9f9f9);
+}
+
+.icon {
+  flex-shrink: 0;
+  margin-right: 0.75rem;
+  font-size: 1.25rem;
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.label {
+  font-size: 0.85rem;
+  color: var(--gitbook-include-label-color, #666);
+  font-weight: 500;
+}
+
+.path {
+  font-family: var(--ifm-font-family-monospace, monospace);
+  font-size: 0.9rem;
+  color: var(--gitbook-include-path-color, #0969da);
+  background: none;
+  padding: 0;
+}
+
+.hint {
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+  color: var(--gitbook-include-hint-color, #888);
+}
+
+.code {
+  display: block;
+  margin-top: 0.25rem;
+  font-family: var(--ifm-font-family-monospace, monospace);
+  font-size: 0.75rem;
+  background-color: var(--gitbook-include-code-bg, #f0f0f0);
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+}
+
+/* Dark mode */
+:global([data-theme='dark']) .include {
+  border-color: var(--gitbook-include-border-dark, #444);
+  background-color: var(--gitbook-include-bg-dark, #2a2a2a);
+}
+
+:global([data-theme='dark']) .label {
+  color: var(--gitbook-include-label-color-dark, #aaa);
+}
+
+:global([data-theme='dark']) .path {
+  color: var(--gitbook-include-path-color-dark, #58a6ff);
+}
+
+:global([data-theme='dark']) .hint {
+  color: var(--gitbook-include-hint-color-dark, #777);
+}
+
+:global([data-theme='dark']) .code {
+  background-color: var(--gitbook-include-code-bg-dark, #3a3a3a);
+}

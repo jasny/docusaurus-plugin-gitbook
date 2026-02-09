@@ -1,0 +1,61 @@
+/**
+ * GitBook File styles
+ */
+
+.file {
+  margin: 1rem 0;
+  padding: 1rem;
+  border: 1px solid var(--gitbook-file-border, #e0e0e0);
+  border-radius: 0.5rem;
+  background-color: var(--gitbook-file-bg, #f9f9f9);
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: var(--gitbook-file-link-color, #0969da);
+  font-weight: 500;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.icon {
+  font-size: 1.5rem;
+  margin-right: 0.75rem;
+}
+
+.name {
+  font-family: var(--ifm-font-family-monospace, monospace);
+  font-size: 0.9rem;
+}
+
+.description {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--gitbook-file-desc-color, #666);
+}
+
+.description > *:first-child {
+  margin-top: 0;
+}
+
+.description > *:last-child {
+  margin-bottom: 0;
+}
+
+/* Dark mode */
+:global([data-theme='dark']) .file {
+  border-color: var(--gitbook-file-border-dark, #444);
+  background-color: var(--gitbook-file-bg-dark, #2a2a2a);
+}
+
+:global([data-theme='dark']) .link {
+  color: var(--gitbook-file-link-color-dark, #58a6ff);
+}
+
+:global([data-theme='dark']) .description {
+  color: var(--gitbook-file-desc-color-dark, #aaa);
+}

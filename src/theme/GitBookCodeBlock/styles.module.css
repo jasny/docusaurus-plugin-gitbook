@@ -1,0 +1,55 @@
+/**
+ * GitBook Code Block styles
+ */
+
+.codeBlock {
+  margin: 1rem 0;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  border: 1px solid var(--gitbook-code-border, #e0e0e0);
+}
+
+.header {
+  padding: 0.5rem 1rem;
+  background-color: var(--gitbook-code-header-bg, #f5f5f5);
+  border-bottom: 1px solid var(--gitbook-code-border, #e0e0e0);
+}
+
+.title {
+  font-family: var(--ifm-font-family-monospace, monospace);
+  font-size: 0.85rem;
+  color: var(--gitbook-code-title-color, #666);
+}
+
+.content {
+  margin: 0;
+}
+
+.content pre {
+  margin: 0 !important;
+  border-radius: 0 !important;
+  border: none !important;
+}
+
+.scroll .content {
+  overflow-x: auto;
+}
+
+.wrap .content pre {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+/* Dark mode */
+:global([data-theme='dark']) .codeBlock {
+  border-color: var(--gitbook-code-border-dark, #444);
+}
+
+:global([data-theme='dark']) .header {
+  background-color: var(--gitbook-code-header-bg-dark, #2a2a2a);
+  border-color: var(--gitbook-code-border-dark, #444);
+}
+
+:global([data-theme='dark']) .title {
+  color: var(--gitbook-code-title-color-dark, #aaa);
+}

@@ -1,0 +1,235 @@
+/**
+ * GitBook Theme - Global CSS Variables
+ *
+ * This file defines all CSS variables used by GitBook components.
+ * Import this file in your custom.css to ensure consistent theming.
+ *
+ * Usage:
+ *   @import 'docusaurus-plugin-gitbook/theme/gitbook.css';
+ *
+ * Or override variables in your own CSS:
+ *   :root {
+ *     --gitbook-hint-info-bg: #e7f3ff;
+ *   }
+ */
+
+/* ========================================
+   Light Mode Variables (Default)
+   ======================================== */
+
+:root {
+  /* Primary accent color */
+  --gitbook-primary: #0969da;
+  --gitbook-primary-hover: #0756b3;
+
+  /* Hint block colors */
+  --gitbook-hint-info-bg: #e7f3ff;
+  --gitbook-hint-info-border: #0969da;
+  --gitbook-hint-info-color: inherit;
+
+  --gitbook-hint-warning-bg: #fff8e6;
+  --gitbook-hint-warning-border: #9a6700;
+  --gitbook-hint-warning-color: inherit;
+
+  --gitbook-hint-danger-bg: #ffebe9;
+  --gitbook-hint-danger-border: #cf222e;
+  --gitbook-hint-danger-color: inherit;
+
+  --gitbook-hint-success-bg: #dafbe1;
+  --gitbook-hint-success-border: #1a7f37;
+  --gitbook-hint-success-color: inherit;
+
+  /* Tab colors */
+  --gitbook-tabs-border: #e0e0e0;
+  --gitbook-tab-color: #666;
+  --gitbook-tab-hover-color: #333;
+  --gitbook-tab-active-color: #0969da;
+  --gitbook-tab-active-border: #0969da;
+
+  /* Step/Stepper colors */
+  --gitbook-step-bg: #0969da;
+  --gitbook-step-color: #fff;
+  --gitbook-step-line: #e0e0e0;
+
+  /* Update/Timeline colors */
+  --gitbook-update-dot: #0969da;
+  --gitbook-update-line: #e0e0e0;
+  --gitbook-update-date-color: #666;
+
+  /* Button colors */
+  --gitbook-button-primary-bg: #0969da;
+  --gitbook-button-primary-color: #fff;
+  --gitbook-button-primary-hover-bg: #0756b3;
+  --gitbook-button-secondary-color: #0969da;
+  --gitbook-button-secondary-border: #0969da;
+  --gitbook-button-secondary-hover-bg: rgba(9, 105, 218, 0.1);
+
+  /* Card colors */
+  --gitbook-card-border: #e0e0e0;
+  --gitbook-card-bg: #fff;
+  --gitbook-card-hover-border: #0969da;
+  --gitbook-card-title-color: #0969da;
+  --gitbook-card-content-color: #666;
+
+  /* File block colors */
+  --gitbook-file-border: #e0e0e0;
+  --gitbook-file-bg: #f9f9f9;
+  --gitbook-file-link-color: #0969da;
+  --gitbook-file-desc-color: #666;
+
+  /* Embed colors */
+  --gitbook-embed-bg: #f5f5f5;
+  --gitbook-embed-link-color: #0969da;
+
+  /* Expression colors */
+  --gitbook-expression-bg: #f0f0f0;
+
+  /* Code block colors */
+  --gitbook-code-border: #e0e0e0;
+  --gitbook-code-header-bg: #f6f8fa;
+  --gitbook-code-title-color: #666;
+
+  /* Include block colors */
+  --gitbook-include-border: #e0e0e0;
+  --gitbook-include-bg: #f9f9f9;
+  --gitbook-include-label-color: #666;
+  --gitbook-include-path-color: #0969da;
+  --gitbook-include-hint-color: #888;
+  --gitbook-include-code-bg: #f0f0f0;
+
+  /* OpenAPI block colors */
+  --gitbook-openapi-border: #e0e0e0;
+  --gitbook-openapi-header-bg: #f9f9f9;
+  --gitbook-openapi-path-color: #333;
+  --gitbook-openapi-label-color: #666;
+  --gitbook-openapi-link-color: #0969da;
+}
+
+/* ========================================
+   Dark Mode Variables
+   ======================================== */
+
+[data-theme='dark'] {
+  /* Primary accent color */
+  --gitbook-primary: #58a6ff;
+  --gitbook-primary-hover: #79b8ff;
+
+  /* Hint block colors */
+  --gitbook-hint-info-bg: #1c3a5e;
+  --gitbook-hint-info-bg-dark: #1c3a5e;
+
+  --gitbook-hint-warning-bg: #4d3800;
+  --gitbook-hint-warning-bg-dark: #4d3800;
+
+  --gitbook-hint-danger-bg: #4d0f0f;
+  --gitbook-hint-danger-bg-dark: #4d0f0f;
+
+  --gitbook-hint-success-bg: #0f4d1a;
+  --gitbook-hint-success-bg-dark: #0f4d1a;
+
+  /* Tab colors */
+  --gitbook-tabs-border: #444;
+  --gitbook-tabs-border-dark: #444;
+  --gitbook-tab-color: #aaa;
+  --gitbook-tab-color-dark: #aaa;
+  --gitbook-tab-hover-color: #ddd;
+  --gitbook-tab-hover-color-dark: #ddd;
+  --gitbook-tab-active-color: #58a6ff;
+  --gitbook-tab-active-color-dark: #58a6ff;
+  --gitbook-tab-active-border: #58a6ff;
+  --gitbook-tab-active-border-dark: #58a6ff;
+
+  /* Step/Stepper colors */
+  --gitbook-step-bg: #58a6ff;
+  --gitbook-step-bg-dark: #58a6ff;
+  --gitbook-step-line: #444;
+  --gitbook-step-line-dark: #444;
+
+  /* Update/Timeline colors */
+  --gitbook-update-dot: #58a6ff;
+  --gitbook-update-dot-dark: #58a6ff;
+  --gitbook-update-line: #444;
+  --gitbook-update-line-dark: #444;
+  --gitbook-update-date-color: #aaa;
+  --gitbook-update-date-color-dark: #aaa;
+
+  /* Button colors */
+  --gitbook-button-primary-bg: #58a6ff;
+  --gitbook-button-primary-bg-dark: #58a6ff;
+  --gitbook-button-primary-color: #000;
+  --gitbook-button-primary-color-dark: #000;
+  --gitbook-button-primary-hover-bg: #79b8ff;
+  --gitbook-button-primary-hover-bg-dark: #79b8ff;
+  --gitbook-button-secondary-color: #58a6ff;
+  --gitbook-button-secondary-color-dark: #58a6ff;
+  --gitbook-button-secondary-border: #58a6ff;
+  --gitbook-button-secondary-border-dark: #58a6ff;
+  --gitbook-button-secondary-hover-bg: rgba(88, 166, 255, 0.1);
+  --gitbook-button-secondary-hover-bg-dark: rgba(88, 166, 255, 0.1);
+
+  /* Card colors */
+  --gitbook-card-border: #444;
+  --gitbook-card-border-dark: #444;
+  --gitbook-card-bg: #2a2a2a;
+  --gitbook-card-bg-dark: #2a2a2a;
+  --gitbook-card-hover-border: #58a6ff;
+  --gitbook-card-hover-border-dark: #58a6ff;
+  --gitbook-card-title-color: #58a6ff;
+  --gitbook-card-title-color-dark: #58a6ff;
+  --gitbook-card-content-color: #aaa;
+  --gitbook-card-content-color-dark: #aaa;
+
+  /* File block colors */
+  --gitbook-file-border: #444;
+  --gitbook-file-border-dark: #444;
+  --gitbook-file-bg: #2a2a2a;
+  --gitbook-file-bg-dark: #2a2a2a;
+  --gitbook-file-link-color: #58a6ff;
+  --gitbook-file-link-color-dark: #58a6ff;
+  --gitbook-file-desc-color: #aaa;
+  --gitbook-file-desc-color-dark: #aaa;
+
+  /* Embed colors */
+  --gitbook-embed-bg: #2a2a2a;
+  --gitbook-embed-bg-dark: #2a2a2a;
+  --gitbook-embed-link-color: #58a6ff;
+  --gitbook-embed-link-color-dark: #58a6ff;
+
+  /* Expression colors */
+  --gitbook-expression-bg: #3a3a3a;
+  --gitbook-expression-bg-dark: #3a3a3a;
+
+  /* Code block colors */
+  --gitbook-code-border: #444;
+  --gitbook-code-border-dark: #444;
+  --gitbook-code-header-bg: #2a2a2a;
+  --gitbook-code-header-bg-dark: #2a2a2a;
+  --gitbook-code-title-color: #aaa;
+  --gitbook-code-title-color-dark: #aaa;
+
+  /* Include block colors */
+  --gitbook-include-border: #444;
+  --gitbook-include-border-dark: #444;
+  --gitbook-include-bg: #2a2a2a;
+  --gitbook-include-bg-dark: #2a2a2a;
+  --gitbook-include-label-color: #aaa;
+  --gitbook-include-label-color-dark: #aaa;
+  --gitbook-include-path-color: #58a6ff;
+  --gitbook-include-path-color-dark: #58a6ff;
+  --gitbook-include-hint-color: #777;
+  --gitbook-include-hint-color-dark: #777;
+  --gitbook-include-code-bg: #3a3a3a;
+  --gitbook-include-code-bg-dark: #3a3a3a;
+
+  /* OpenAPI block colors */
+  --gitbook-openapi-border: #444;
+  --gitbook-openapi-border-dark: #444;
+  --gitbook-openapi-header-bg: #2a2a2a;
+  --gitbook-openapi-header-bg-dark: #2a2a2a;
+  --gitbook-openapi-path-color: #ddd;
+  --gitbook-openapi-path-color-dark: #ddd;
+  --gitbook-openapi-label-color: #aaa;
+  --gitbook-openapi-label-color-dark: #aaa;
+  --gitbook-openapi-link-color: #58a6ff;
+  --gitbook-openapi-link-color-dark: #58a6ff;
+}

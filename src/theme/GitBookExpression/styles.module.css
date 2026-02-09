@@ -1,0 +1,16 @@
+/**
+ * GitBook Expression styles
+ */
+
+.expression {
+  font-family: var(--ifm-font-family-monospace, monospace);
+  background-color: var(--gitbook-expression-bg, #f0f0f0);
+  padding: 0.1em 0.3em;
+  border-radius: 0.25em;
+  font-size: 0.9em;
+}
+
+/* Dark mode */
+:global([data-theme='dark']) .expression {
+  background-color: var(--gitbook-expression-bg-dark, #3a3a3a);
+}

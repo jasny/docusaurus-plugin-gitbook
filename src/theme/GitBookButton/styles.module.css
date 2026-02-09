@@ -1,0 +1,66 @@
+/**
+ * GitBook Button styles
+ */
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background-color 0.2s, color 0.2s, transform 0.1s;
+  cursor: pointer;
+}
+
+.button:hover {
+  transform: translateY(-1px);
+}
+
+.button:active {
+  transform: translateY(0);
+}
+
+/* Primary variant */
+.primary {
+  background-color: var(--gitbook-button-primary-bg, #0969da);
+  color: var(--gitbook-button-primary-color, #fff);
+}
+
+.primary:hover {
+  background-color: var(--gitbook-button-primary-hover-bg, #0756b3);
+  color: var(--gitbook-button-primary-color, #fff);
+}
+
+/* Secondary variant */
+.secondary {
+  background-color: transparent;
+  color: var(--gitbook-button-secondary-color, #0969da);
+  border: 1px solid var(--gitbook-button-secondary-border, #0969da);
+}
+
+.secondary:hover {
+  background-color: var(--gitbook-button-secondary-hover-bg, rgba(9, 105, 218, 0.1));
+  color: var(--gitbook-button-secondary-color, #0969da);
+}
+
+/* Dark mode */
+:global([data-theme='dark']) .primary {
+  background-color: var(--gitbook-button-primary-bg-dark, #58a6ff);
+  color: var(--gitbook-button-primary-color-dark, #000);
+}
+
+:global([data-theme='dark']) .primary:hover {
+  background-color: var(--gitbook-button-primary-hover-bg-dark, #79b8ff);
+}
+
+:global([data-theme='dark']) .secondary {
+  color: var(--gitbook-button-secondary-color-dark, #58a6ff);
+  border-color: var(--gitbook-button-secondary-border-dark, #58a6ff);
+}
+
+:global([data-theme='dark']) .secondary:hover {
+  background-color: var(--gitbook-button-secondary-hover-bg-dark, rgba(88, 166, 255, 0.1));
+  color: var(--gitbook-button-secondary-color-dark, #58a6ff);
+}

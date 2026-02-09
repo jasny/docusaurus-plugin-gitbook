@@ -1,0 +1,111 @@
+/**
+ * GitBook OpenAPI styles
+ */
+
+.openapi {
+  margin: 1rem 0;
+  border: 1px solid var(--gitbook-openapi-border, #e0e0e0);
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  background-color: var(--gitbook-openapi-header-bg, #f9f9f9);
+  border-bottom: 1px solid var(--gitbook-openapi-border, #e0e0e0);
+}
+
+.method {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #fff;
+  margin-right: 0.75rem;
+  min-width: 4rem;
+}
+
+/* HTTP method colors */
+.get {
+  background-color: #61affe;
+}
+
+.post {
+  background-color: #49cc90;
+}
+
+.put {
+  background-color: #fca130;
+}
+
+.patch {
+  background-color: #50e3c2;
+}
+
+.delete {
+  background-color: #f93e3e;
+}
+
+.head {
+  background-color: #9012fe;
+}
+
+.options {
+  background-color: #0d5aa7;
+}
+
+.path {
+  font-family: var(--ifm-font-family-monospace, monospace);
+  font-size: 0.9rem;
+  background: none;
+  padding: 0;
+  color: var(--gitbook-openapi-path-color, #333);
+}
+
+.source {
+  padding: 0.75rem 1rem;
+  font-size: 0.85rem;
+}
+
+.label {
+  color: var(--gitbook-openapi-label-color, #666);
+  margin-right: 0.5rem;
+}
+
+.link {
+  color: var(--gitbook-openapi-link-color, #0969da);
+  text-decoration: none;
+  word-break: break-all;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+/* Dark mode */
+:global([data-theme='dark']) .openapi {
+  border-color: var(--gitbook-openapi-border-dark, #444);
+}
+
+:global([data-theme='dark']) .header {
+  background-color: var(--gitbook-openapi-header-bg-dark, #2a2a2a);
+  border-color: var(--gitbook-openapi-border-dark, #444);
+}
+
+:global([data-theme='dark']) .path {
+  color: var(--gitbook-openapi-path-color-dark, #ddd);
+}
+
+:global([data-theme='dark']) .label {
+  color: var(--gitbook-openapi-label-color-dark, #aaa);
+}
+
+:global([data-theme='dark']) .link {
+  color: var(--gitbook-openapi-link-color-dark, #58a6ff);
+}

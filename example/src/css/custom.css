@@ -1,0 +1,26 @@
+/**
+ * Custom CSS for GitBook plugin example site
+ *
+ * The docusaurus-plugin-gitbook automatically includes gitbook.css
+ * which provides all the default styling. You can override any
+ * variables here.
+ */
+
+/* Example: Override primary color */
+:root {
+  --ifm-color-primary: #2e8555;
+  --ifm-color-primary-dark: #29784c;
+  --ifm-color-primary-darker: #277148;
+  --ifm-color-primary-darkest: #205d3b;
+  --ifm-color-primary-light: #33925d;
+  --ifm-color-primary-lighter: #359962;
+  --ifm-color-primary-lightest: #3cad6e;
+}
+
+/* Optional: Override GitBook variables */
+/*
+:root {
+  --gitbook-hint-info-bg: #e7f3ff;
+  --gitbook-hint-info-border: #0969da;
+}
+*/

@@ -1,0 +1,55 @@
+{
+  "name": "docusaurus-plugin-gitbook",
+  "version": "0.1.0",
+  "description": "Docusaurus plugin for MDX that adds support for GitBook-specific blocks",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch",
+    "clean": "rm -rf lib",
+    "prepublishOnly": "yarn clean && yarn build",
+    "test": "vitest",
+    "test:watch": "vitest --watch",
+    "lint": "eslint src",
+    "lint:fix": "eslint src --fix",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [
+    "docusaurus",
+    "plugin",
+    "gitbook",
+    "mdx",
+    "remark"
+  ],
+  "license": "MIT",
+  "packageManager": "yarn@4.12.0",
+  "peerDependencies": {
+    "@docusaurus/core": "^3.0.0"
+  },
+  "type": "module",
+  "devDependencies": {
+    "@docusaurus/core": "^3.7.0",
+    "@docusaurus/types": "^3.7.0",
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.2.13",
+    "@types/react-dom": "^19.2.3",
+    "eslint": "^9.0.0",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "rehype-parse": "^9.0.1",
+    "rehype-stringify": "^10.0.1",
+    "typescript": "^5.7.0",
+    "typescript-eslint": "^8.0.0",
+    "vitest": "^3.0.0"
+  },
+  "dependencies": {
+    "@types/mdast": "^4.0.4",
+    "mdast-util-mdx-jsx": "^3.2.0",
+    "unist-util-visit": "^5.0.0"
+  }
+}
