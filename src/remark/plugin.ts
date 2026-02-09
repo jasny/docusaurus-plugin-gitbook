@@ -4,11 +4,13 @@
 
 import type { Root, Content } from 'mdast';
 import type { Plugin } from 'unified';
+import { unified } from 'unified';
+import remarkParse from 'remark-parse';
 import { visit } from 'unist-util-visit';
 import { parse, type GitBookBlock } from '../parser/index.js';
 import { tokenize, isTextSegment } from '../parser/tokenizer.js';
 import { getTransformer, hasTransformer } from './transformers/index.js';
-import { containsGitBookSyntax, getTextContent } from './utils.js';
+import { containsGitBookSyntax, getTextContent, nodeToMarkdown } from './utils.js';
 
 // Import all transformers to register them
 import './transformers/all.js';
@@ -104,42 +106,50 @@ function processBlock(
 }
 
 /**
- * Process content string into MDAST nodes
- * This is a simplified version - in practice, we'd use a proper markdown parser
+ * Process content string into MDAST nodes by parsing it as real markdown.
+ * Any nested GitBook blocks within the parsed content are recursively
+ * transformed.
  */
 function parseMarkdownContent(content: string): Content[] {
-  // For now, return as a simple text paragraph
-  // This will be enhanced to properly parse nested markdown
   if (!content.trim()) {
     return [];
   }
 
-  // Check if content has GitBook blocks
-  if (containsGitBookSyntax(content)) {
-    const result = parse(content);
-    const nodes: Content[] = [];
+  // Parse the content as proper markdown to produce real MDAST nodes
+  // (headings, code blocks, lists, inline code, etc.)
+  const tree = unified().use(remarkParse).parse(content);
+  const children = tree.children as Content[];
 
-    // TODO: Properly interleave text and blocks
-    // For now, just process blocks
-    for (const block of result.blocks) {
-      const processed = processBlock(block, parseMarkdownContent);
-      if (processed) {
-        nodes.push(...processed);
+  // Walk the parsed nodes and transform any that contain GitBook syntax
+  const result: Content[] = [];
+  let i = 0;
+
+  while (i < children.length) {
+    const node = children[i];
+    const nodeText = getTextContent(node);
+
+    if (containsGitBookSyntax(nodeText)) {
+      // Collect consecutive nodes forming the GitBook block
+      const collected = collectBlockNodes({ children }, i);
+      if (collected) {
+        const parseResult = parse(collected.text);
+        for (const block of parseResult.blocks) {
+          const processed = processBlock(block, parseMarkdownContent);
+          if (processed) {
+            result.push(...processed);
+          }
+        }
+        i = collected.endIndex + 1;
+        continue;
       }
     }
 
-    if (nodes.length > 0) {
-      return nodes;
-    }
+    // Not GitBook syntax — keep the node as-is
+    result.push(node);
+    i++;
   }
 
-  // Return as text paragraph
-  return [
-    {
-      type: 'paragraph',
-      children: [{ type: 'text', value: content }],
-    },
-  ];
+  return result;
 }
 
 /**
@@ -159,7 +169,7 @@ function collectBlockNodes(
 
   for (let i = startIndex; i < children.length; i++) {
     const node = children[i];
-    const nodeText = getTextContent(node);
+    const nodeText = nodeToMarkdown(node);
     text += (i > startIndex ? '\n' : '') + nodeText;
     endIndex = i;
 
