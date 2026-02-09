@@ -16,6 +16,7 @@ const sidebars = {
         'blocks/buttons',
         'blocks/cards',
         'blocks/icons',
+        'blocks/openapi',
       ],
     },
   ],

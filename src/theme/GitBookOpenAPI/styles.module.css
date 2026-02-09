@@ -4,8 +4,8 @@
 
 .openapi {
   margin: 1rem 0;
-  border: 1px solid var(--gitbook-openapi-border, #e0e0e0);
-  border-radius: 0.5rem;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: var(--ifm-global-radius);
   overflow: hidden;
 }
 
@@ -13,8 +13,8 @@
   display: flex;
   align-items: center;
   padding: 0.75rem 1rem;
-  background-color: var(--gitbook-openapi-header-bg, #f9f9f9);
-  border-bottom: 1px solid var(--gitbook-openapi-border, #e0e0e0);
+  background-color: var(--ifm-color-emphasis-100);
+  border-bottom: 1px solid var(--ifm-color-emphasis-300);
 }
 
 .method {
@@ -61,51 +61,154 @@
 }
 
 .path {
-  font-family: var(--ifm-font-family-monospace, monospace);
+  font-family: var(--ifm-font-family-monospace);
   font-size: 0.9rem;
   background: none;
   padding: 0;
-  color: var(--gitbook-openapi-path-color, #333);
 }
 
-.source {
+/* Details area */
+.details {
   padding: 0.75rem 1rem;
+}
+
+.summary {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.description {
+  font-size: 0.9rem;
+  color: var(--ifm-color-emphasis-700);
+  margin-bottom: 0.75rem;
+}
+
+/* Sections (parameters, responses) */
+.section {
+  margin-top: 0.75rem;
+}
+
+.sectionTitle {
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ifm-color-emphasis-600);
+  margin: 0 0 0.5rem 0;
+}
+
+/* Parameters table */
+.paramTable {
+  width: 100%;
+  border-collapse: collapse;
   font-size: 0.85rem;
 }
 
-.label {
-  color: var(--gitbook-openapi-label-color, #666);
-  margin-right: 0.5rem;
+.paramTable th {
+  text-align: left;
+  padding: 0.4rem 0.5rem;
+  border-bottom: 2px solid var(--ifm-color-emphasis-300);
+  font-weight: 600;
+  font-size: 0.8rem;
+  color: var(--ifm-color-emphasis-600);
+}
+
+.paramTable td {
+  padding: 0.4rem 0.5rem;
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.paramTable code {
+  font-size: 0.8rem;
+  padding: 0.1rem 0.3rem;
+  border-radius: 3px;
+  background-color: var(--ifm-color-emphasis-100);
+}
+
+/* Responses */
+.responseList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.responseRow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.85rem;
+}
+
+.statusCode {
+  display: inline-block;
+  min-width: 3rem;
+  padding: 0.15rem 0.4rem;
+  border-radius: 3px;
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-align: center;
+  font-family: var(--ifm-font-family-monospace);
+}
+
+.statusSuccess {
+  background-color: rgba(73, 204, 144, 0.15);
+  color: #1a7f37;
+}
+
+.statusError {
+  background-color: rgba(249, 62, 62, 0.15);
+  color: #cf222e;
+}
+
+.statusInfo {
+  background-color: rgba(97, 175, 254, 0.15);
+  color: #0550ae;
+}
+
+.responseDesc {
+  color: var(--ifm-color-emphasis-700);
+}
+
+/* Source link */
+.source {
+  margin-top: 0.75rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+  font-size: 0.85rem;
 }
 
 .link {
-  color: var(--gitbook-openapi-link-color, #0969da);
+  color: var(--ifm-color-primary);
   text-decoration: none;
-  word-break: break-all;
 }
 
 .link:hover {
   text-decoration: underline;
 }
 
-/* Dark mode */
-:global([data-theme='dark']) .openapi {
-  border-color: var(--gitbook-openapi-border-dark, #444);
+/* Loading and error states */
+.loading {
+  padding: 0.75rem 1rem;
+  font-size: 0.85rem;
+  color: var(--ifm-color-emphasis-600);
 }
 
-:global([data-theme='dark']) .header {
-  background-color: var(--gitbook-openapi-header-bg-dark, #2a2a2a);
-  border-color: var(--gitbook-openapi-border-dark, #444);
+.error {
+  font-size: 0.85rem;
+  color: var(--ifm-color-danger);
+  margin-bottom: 0.5rem;
 }
 
-:global([data-theme='dark']) .path {
-  color: var(--gitbook-openapi-path-color-dark, #ddd);
+/* Dark mode adjustments */
+:global([data-theme='dark']) .statusSuccess {
+  color: #49cc90;
 }
 
-:global([data-theme='dark']) .label {
-  color: var(--gitbook-openapi-label-color-dark, #aaa);
+:global([data-theme='dark']) .statusError {
+  color: #f93e3e;
 }
 
-:global([data-theme='dark']) .link {
-  color: var(--gitbook-openapi-link-color-dark, #58a6ff);
+:global([data-theme='dark']) .statusInfo {
+  color: #61affe;
 }
