@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { tokenize, parseAttributes, parse, findBlocks } from '../index.js';
+import { tokenize, parseAttributes, parse, findBlocks } from '../src/parser/index.js';
 
 describe('tokenizer', () => {
   describe('parseAttributes', () => {
