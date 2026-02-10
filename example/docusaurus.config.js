@@ -13,7 +13,6 @@ const config = {
   baseUrl: '/',
 
   onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
 
   i18n: {
     defaultLocale: 'en',
@@ -26,6 +25,9 @@ const config = {
       // Temporarily escape GitBook syntax to prevent MDX from parsing it
       // The remark plugin will handle the actual transformation
       return fileContent;
+    },
+    hooks: {
+      onBrokenMarkdownLinks: 'warn',
     },
   },
 
