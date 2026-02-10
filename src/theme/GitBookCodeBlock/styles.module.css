@@ -25,6 +25,10 @@
   margin: 0;
 }
 
+.content :global(.theme-code-block) {
+  margin-bottom: 0;
+}
+
 .content pre {
   margin: 0 !important;
   border-radius: 0 !important;
