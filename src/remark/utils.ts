@@ -126,6 +126,11 @@ export function nodeToMarkdown(node: Content): string {
     case 'link': {
       const link = node as Content & { url: string; children: Content[] };
       const text = link.children.map((c) => nodeToMarkdown(c as Content)).join('');
+      // If text matches URL, it's an autolink — output just the plain URL
+      // to avoid corrupting attribute values inside GitBook tags
+      if (text === link.url) {
+        return text;
+      }
       return `[${text}](${link.url})`;
     }
     case 'blockquote':
