@@ -111,16 +111,73 @@ function tokenizeTag(match: RegExpExecArray): Token | null {
 }
 
 /**
+ * Find fenced code block regions in text.
+ * Returns an array of {start, end} character offsets for each code block.
+ */
+function findCodeBlockRegions(text: string): Array<{ start: number; end: number }> {
+  const regions: Array<{ start: number; end: number }> = [];
+  const lines = text.split('\n');
+  let pos = 0;
+  let inCodeBlock = false;
+  let codeBlockStart = 0;
+  let fenceChar = '';
+  let fenceLen = 0;
+
+  for (const line of lines) {
+    const trimmed = line.trimStart();
+
+    if (!inCodeBlock) {
+      const openMatch = trimmed.match(/^(`{3,}|~{3,})/);
+      if (openMatch) {
+        inCodeBlock = true;
+        codeBlockStart = pos;
+        fenceChar = openMatch[1][0];
+        fenceLen = openMatch[1].length;
+      }
+    } else {
+      // Closing fence must use same char and be at least as long
+      const closeMatch = trimmed.match(/^(`{3,}|~{3,})\s*$/);
+      if (closeMatch && closeMatch[1][0] === fenceChar && closeMatch[1].length >= fenceLen) {
+        inCodeBlock = false;
+        regions.push({ start: codeBlockStart, end: pos + line.length });
+      }
+    }
+
+    pos += line.length + 1; // +1 for \n
+  }
+
+  return regions;
+}
+
+/**
+ * Check if a character offset falls inside any code block region.
+ */
+function isInsideCodeBlock(
+  index: number,
+  regions: Array<{ start: number; end: number }>
+): boolean {
+  return regions.some((r) => index >= r.start && index <= r.end);
+}
+
+/**
  * Tokenize text into segments (tokens and text)
  */
 export function tokenize(text: string): Segment[] {
   const segments: Segment[] = [];
   let lastIndex = 0;
 
+  // Pre-compute fenced code block regions to skip tags inside them
+  const codeBlockRegions = findCodeBlockRegions(text);
+
   TAG_PATTERN.lastIndex = 0;
   let match: RegExpExecArray | null;
 
   while ((match = TAG_PATTERN.exec(text)) !== null) {
+    // Skip tags inside fenced code blocks — treat them as plain text
+    if (isInsideCodeBlock(match.index, codeBlockRegions)) {
+      continue;
+    }
+
     // Add text before this tag
     if (match.index > lastIndex) {
       segments.push({
