@@ -20,11 +20,11 @@ node_modules
 lib/
 dist/
 
-# Example site build artifacts
-example/.docusaurus/
-example/build/
-example/.yarn/
-example/node_modules/
+# Docs site build artifacts
+docs/.docusaurus/
+docs/build/
+docs/.yarn/
+docs/node_modules/
 
 # IDE
 .idea/

@@ -5,12 +5,12 @@ import { remarkGitBook, rehypeGitBook } from 'docusaurus-plugin-gitbook';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'GitBook Plugin Example',
-  tagline: 'Demonstrating GitBook syntax in Docusaurus',
+  title: 'docusaurus-plugin-gitbook',
+  tagline: 'Write on GitBook. Host anywhere.',
   favicon: 'img/favicon.ico',
 
-  url: 'https://example.com',
-  baseUrl: '/',
+  url: 'https://jasny.net',
+  baseUrl: '/docusaurus-plugin-gitbook/',
 
   onBrokenLinks: 'throw',
 
@@ -21,14 +21,6 @@ const config = {
 
   markdown: {
     format: 'md',
-    preprocessor: ({ filePath, fileContent }) => {
-      // Temporarily escape GitBook syntax to prevent MDX from parsing it
-      // The remark plugin will handle the actual transformation
-      return fileContent;
-    },
-    hooks: {
-      onBrokenMarkdownLinks: 'warn',
-    },
   },
 
   stylesheets: [
@@ -43,10 +35,12 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
+          routeBasePath: '/',
           sidebarPath: './sidebars.js',
           beforeDefaultRemarkPlugins: [remarkGitBook],
           rehypePlugins: [rehypeGitBook],
         },
+        blog: false,
         theme: {
           customCss: './src/css/custom.css',
         },
@@ -58,15 +52,40 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: 'GitBook Plugin Demo',
+        title: 'docusaurus-plugin-gitbook',
         items: [
           {
-            type: 'docSidebar',
-            sidebarId: 'tutorialSidebar',
-            position: 'left',
-            label: 'Docs',
+            href: 'https://github.com/jasny/docusaurus-plugin-gitbook',
+            label: 'GitHub',
+            position: 'right',
           },
         ],
+      },
+      footer: {
+        style: 'dark',
+        links: [
+          {
+            title: 'Docs',
+            items: [
+              { label: 'Introduction', to: '/' },
+              { label: 'Getting Started', to: '/getting-started' },
+            ],
+          },
+          {
+            title: 'More',
+            items: [
+              {
+                label: 'GitHub',
+                href: 'https://github.com/jasny/docusaurus-plugin-gitbook',
+              },
+              {
+                label: 'npm',
+                href: 'https://www.npmjs.com/package/docusaurus-plugin-gitbook',
+              },
+            ],
+          },
+        ],
+        copyright: `Copyright ${new Date().getFullYear()} Arnold Daniels. Built with Docusaurus.`,
       },
       prism: {
         theme: prismThemes.github,

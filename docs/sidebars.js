@@ -1,10 +1,11 @@
 /** @type {import('@docusaurus/plugin-content-docs').SidebarsConfig} */
 const sidebars = {
-  tutorialSidebar: [
+  docs: [
     'intro',
+    'getting-started',
     {
       type: 'category',
-      label: 'Blocks',
+      label: 'Supported Blocks',
       items: [
         'blocks/hints',
         'blocks/tabs',
@@ -19,6 +20,7 @@ const sidebars = {
         'blocks/openapi',
       ],
     },
+    'customization',
   ],
 };
 
