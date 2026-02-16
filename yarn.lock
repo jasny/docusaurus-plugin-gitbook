@@ -6608,13 +6608,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"docusaurus-plugin-gitbook@link:..::locator=gitbook-plugin-example%40workspace%3Adocs":
-  version: 0.0.0-use.local
-  resolution: "docusaurus-plugin-gitbook@link:..::locator=gitbook-plugin-example%40workspace%3Adocs"
-  languageName: node
-  linkType: soft
-
-"docusaurus-plugin-gitbook@workspace:.":
+"docusaurus-plugin-gitbook@workspace:*, docusaurus-plugin-gitbook@workspace:.":
   version: 0.0.0-use.local
   resolution: "docusaurus-plugin-gitbook@workspace:."
   dependencies:
@@ -7784,7 +7778,7 @@ __metadata:
     "@docusaurus/types": "npm:^3.7.0"
     "@mdx-js/react": "npm:^3.0.0"
     clsx: "npm:^2.1.0"
-    docusaurus-plugin-gitbook: "link:.."
+    docusaurus-plugin-gitbook: "workspace:*"
     prism-react-renderer: "npm:^2.3.1"
     react: "npm:^18.2.0"
     react-dom: "npm:^18.2.0"
