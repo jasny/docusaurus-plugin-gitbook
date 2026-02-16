@@ -28,6 +28,9 @@
   ],
   "license": "MIT",
   "packageManager": "yarn@4.12.0",
+  "workspaces": [
+    "docs"
+  ],
   "peerDependencies": {
     "@docusaurus/core": "^3.0.0",
     "docusaurus-theme-openapi-docs": "^4.0.0 || ^3.0.0"

@@ -27,19 +27,15 @@ jobs:
       - name: Enable Corepack
         run: corepack enable
 
-      - name: Install plugin dependencies
+      - name: Install dependencies
         run: yarn install --immutable
 
       - name: Build plugin
         run: yarn build
 
-      - name: Install docs dependencies
-        working-directory: docs
-        run: yarn install --immutable
-
       - name: Build docs site
         working-directory: docs
-        run: yarn build
+        run: npx docusaurus build
 
       - uses: actions/upload-pages-artifact@v3
         with:
