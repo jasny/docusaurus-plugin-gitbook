@@ -3459,7 +3459,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/hast@npm:^3.0.0":
+"@types/hast@npm:^3.0.0, @types/hast@npm:^3.0.4":
   version: 3.0.4
   resolution: "@types/hast@npm:3.0.4"
   dependencies:
@@ -5715,11 +5715,13 @@ __metadata:
     "@docusaurus/core": "npm:^3.7.0"
     "@docusaurus/types": "npm:^3.7.0"
     "@eslint/js": "npm:^10.0.1"
+    "@types/hast": "npm:^3.0.4"
     "@types/mdast": "npm:^4.0.4"
     "@types/node": "npm:^22.0.0"
     "@types/react": "npm:^19.2.13"
     "@types/react-dom": "npm:^19.2.3"
     eslint: "npm:^9.0.0"
+    hast: "npm:^1.0.0"
     mdast-util-mdx-jsx: "npm:^3.2.0"
     react: "npm:^19.2.4"
     react-dom: "npm:^19.2.4"
@@ -7206,6 +7208,13 @@ __metadata:
   dependencies:
     "@types/hast": "npm:^3.0.0"
   checksum: 10c0/b898bc9fe27884b272580d15260b6bbdabe239973a147e97fa98c45fa0ffec967a481aaa42291ec34fb56530dc2d484d473d7e2bae79f39c83f3762307edfea8
+  languageName: node
+  linkType: hard
+
+"hast@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "hast@npm:1.0.0"
+  checksum: 10c0/a1a4ffaa99c6a4cfe6bd31e54ee919625a8ebcfc621d2d06cc76e593d7aeee4f1f430fcdbbf17ae8e249567ee7b724e4814b5eb273455d23bad8334c9bfc667d
   languageName: node
   linkType: hard
 
