@@ -35,7 +35,7 @@ jobs:
 
       - name: Build docs site
         working-directory: docs
-        run: npx docusaurus build
+        run: node ./node_modules/@docusaurus/core/bin/docusaurus.mjs build
 
       - uses: actions/upload-pages-artifact@v3
         with:
