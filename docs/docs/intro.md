@@ -5,18 +5,18 @@ sidebar_position: 1
 
 # Introduction
 
-**Write your docs in GitBook's rich editor. Host them anywhere - on GitHub Pages, Netlify, Vercel, or your own domain.**
+**Write your docs in GitBook's rich editor. Host them anywhere.**
 
-GitBook is a great editor for writing documentation, but hosting is limited to GitBook's own platform. If you want full control over your site - custom domains, your own CI/CD pipeline, no vendor lock-in - you need an alternative way to build and publish your content.
+GitBook is a great editor for writing documentation, but hosting is limited to GitBook's own platform. If you want full control over your site with custom domains, your own CI/CD pipeline and no vendor lock-in, you need an alternative way to build and publish your content.
 
 ## How it works
 
 GitBook stores your content as Markdown in a Git repository via [GitHub Sync](https://docs.gitbook.com/product-tour/git-sync). This plugin lets [Docusaurus](https://docusaurus.io/) understand GitBook's custom syntax, so you can build a static site from that same repo.
 
-1. **Write** in GitBook's editor — rich blocks, tabs, hints, embeds, and more
+1. **Write** in GitBook's editor. Use rich blocks, tabs, hints, embeds, and more
 2. **Sync** to GitHub automatically via GitBook's Git Sync feature
 3. **Build** with Docusaurus + this plugin to produce a static site
-4. **Deploy** anywhere — GitHub Pages, Netlify, Vercel, S3, or any static host
+4. **Deploy** anywhere, like GitHub Pages, Netlify, Vercel, S3, or any static host
 
 Your content stays in Markdown in your Git repo. No lock-in. If you ever want to switch away from GitBook, your content is already in a standard format.
 
