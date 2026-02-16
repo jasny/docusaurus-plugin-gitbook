@@ -21,15 +21,19 @@ const codeTransformer: BlockTransformer = (
   const lineNumbers = block.attributes.lineNumbers === 'true';
   const overflow = block.attributes.overflow || 'scroll';
 
-  // The content should contain a code fence
-  // We pass it through as children
-  const children = transformContent(block.content);
+  // Modify content to add showLineNumbers to code fence if needed
+  let content = block.content;
+  if (lineNumbers) {
+    // Add showLineNumbers to the code fence language identifier
+    // Match ```language or ```language some-meta
+    content = content.replace(/^```(\w+)(\s|$)/m, '```$1 showLineNumbers$2');
+  }
+
+  // Transform the content
+  const children = transformContent(content);
 
   const attributes: Record<string, string> = { title };
 
-  if (lineNumbers) {
-    attributes.lineNumbers = 'true';
-  }
   if (overflow !== 'scroll') {
     attributes.overflow = overflow;
   }
