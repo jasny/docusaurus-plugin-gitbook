@@ -5,9 +5,9 @@ sidebar_position: 1
 
 # Introduction
 
-**Write your docs in GitBook's rich editor. Host them anywhere — on GitHub Pages, Netlify, Vercel, or your own domain.**
+**Write your docs in GitBook's rich editor. Host them anywhere - on GitHub Pages, Netlify, Vercel, or your own domain.**
 
-GitBook is a great editor for writing documentation, but hosting is limited to GitBook's own platform. If you want full control over your site — custom domains, your own CI/CD pipeline, no vendor lock-in — you need an alternative way to build and publish your content.
+GitBook is a great editor for writing documentation, but hosting is limited to GitBook's own platform. If you want full control over your site - custom domains, your own CI/CD pipeline, no vendor lock-in - you need an alternative way to build and publish your content.
 
 ## How it works
 
@@ -37,5 +37,3 @@ This plugin handles GitBook-specific syntax that standard Markdown processors do
 | [Cards](/blocks/cards) | Card grid layouts |
 | [Icons](/blocks/icons) | Font Awesome icons |
 | [OpenAPI](/blocks/openapi) | OpenAPI/Swagger endpoint documentation |
-
-All blocks are styled to match GitBook's look and feel, with full dark mode support and customizable CSS variables.

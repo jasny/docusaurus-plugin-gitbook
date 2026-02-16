@@ -2,29 +2,23 @@
 
 A [Docusaurus plugin](https://docusaurus.io/docs/advanced/plugins) that adds support for GitBook-specific block syntax in MDX files.
 
+📖 **[Full Documentation](https://www.jasny.net/docusaurus-plugin-gitbook/)**
+
 ## Supported Blocks
 
-### Remark-based ({% tag %} syntax)
-
-| Block | Description |
-|-------|-------------|
-| [Hint](https://gitbook.com/docs/creating-content/blocks/hint) | Callout boxes (info, warning, danger, success) |
-| [Tabs](https://gitbook.com/docs/creating-content/blocks/tabs) | Tabbed content |
-| [Stepper](https://gitbook.com/docs/creating-content/blocks/stepper) | Sequential numbered steps |
-| [Columns](https://gitbook.com/docs/creating-content/blocks/columns) | Side-by-side columns |
-| [Updates](https://gitbook.com/docs/creating-content/blocks/updates) | Changelog/timeline |
-| [Code blocks](https://gitbook.com/docs/creating-content/blocks/code-block) | Code with title |
-| [Embedded URLs](https://gitbook.com/docs/creating-content/blocks/embed-a-url) | YouTube, Vimeo, CodePen embeds |
-| [Files](https://gitbook.com/docs/creating-content/blocks/insert-files) | Downloadable files |
-
-### Rehype-based (HTML syntax)
-
-| Block | Description |
-|-------|-------------|
-| Buttons | Styled link buttons (`<a class="button">`) |
-| Icons | Font Awesome icons (`<i class="fa-*">`) |
-| Cards | Navigation card grid (`<table data-view="cards">`) |
-| Expressions | Variable display (`<code class="expression">`) |
+| Block | Description | Docs |
+|-------|-------------|------|
+| Hints | Info, warning, danger, and success callouts | [View](https://www.jasny.net/docusaurus-plugin-gitbook/blocks/hints) |
+| Tabs | Tabbed content panels | [View](https://www.jasny.net/docusaurus-plugin-gitbook/blocks/tabs) |
+| Stepper | Numbered step-by-step guides | [View](https://www.jasny.net/docusaurus-plugin-gitbook/blocks/stepper) |
+| Columns | Side-by-side column layouts | [View](https://www.jasny.net/docusaurus-plugin-gitbook/blocks/columns) |
+| Code blocks | Code blocks with titles and line numbers | [View](https://www.jasny.net/docusaurus-plugin-gitbook/blocks/code) |
+| Embeds | Embedded external content (YouTube, etc.) | [View](https://www.jasny.net/docusaurus-plugin-gitbook/blocks/embeds) |
+| Files | File download links | [View](https://www.jasny.net/docusaurus-plugin-gitbook/blocks/files) |
+| Buttons | Primary and secondary action buttons | [View](https://www.jasny.net/docusaurus-plugin-gitbook/blocks/buttons) |
+| Cards | Card grid layouts | [View](https://www.jasny.net/docusaurus-plugin-gitbook/blocks/cards) |
+| Icons | Font Awesome icons | [View](https://www.jasny.net/docusaurus-plugin-gitbook/blocks/icons) |
+| OpenAPI | OpenAPI/Swagger endpoint documentation | [View](https://www.jasny.net/docusaurus-plugin-gitbook/blocks/openapi) |
 
 ## Installation
 
