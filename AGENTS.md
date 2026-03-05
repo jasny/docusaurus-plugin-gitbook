@@ -22,6 +22,16 @@ yarn lint:fix     # Run ESLint with auto-fix
 yarn typecheck    # Type-check without emitting
 ```
 
+## Semantic Release
+
+- Publishing is automated by `.github/workflows/publish.yml` on pushes to `main`.
+- This repository publishes a single package: `docusaurus-plugin-gitbook`.
+- The workflow runs `yarn build` and then `yarn dlx semantic-release`.
+- npm publish uses OIDC trusted publishing (`id-token: write` in workflow), so no `NPM_TOKEN` secret is required.
+- Required secret:
+  - `GITHUB_TOKEN` (provided by GitHub Actions)
+- Use Conventional Commits (`feat:`, `fix:`, `chore:`) so semantic-release can compute version bumps and release notes.
+
 ## Architecture
 
 ```
