@@ -1,6 +1,6 @@
-# CLAUDE.md
+# AGENTS.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+This file provides guidance to coding agents working with this repository.
 
 ## Project Overview
 
@@ -74,7 +74,7 @@ src/
 
 ## Implementation Status
 
-See `.claude/plan/` for detailed task files. Tasks are in `todo/`, `progress/`, or `done/`.
+Track detailed task files in your planning area. Tasks should be organized in `todo/`, `progress/`, or `done/`.
 
 **Completed:**
 - Parser infrastructure (tokenizer, parser)
@@ -93,7 +93,7 @@ See `.claude/plan/` for detailed task files. Tasks are in `todo/`, `progress/`, 
 
 ## GitBook Block Syntax Reference
 
-See `.claude/skills/gitbook.md` for comprehensive documentation on GitBook block syntax.
+See the repository's GitBook syntax reference documentation for comprehensive block syntax details.
 
 ### Remark-transformed blocks ({% tag %} syntax):
 - `{% hint style="info|warning|danger|success" %}...{% endhint %}`
