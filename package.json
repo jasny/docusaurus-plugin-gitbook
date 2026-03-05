@@ -1,6 +1,6 @@
 {
   "name": "docusaurus-plugin-gitbook",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Docusaurus plugin for MDX that adds support for GitBook-specific blocks",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -28,9 +28,6 @@
   ],
   "license": "MIT",
   "packageManager": "yarn@4.12.0",
-  "workspaces": [
-    "docs"
-  ],
   "peerDependencies": {
     "@docusaurus/core": "^3.0.0",
     "docusaurus-theme-openapi-docs": "^4.0.0 || ^3.0.0"
