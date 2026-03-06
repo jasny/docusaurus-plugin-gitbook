@@ -2,6 +2,9 @@
   "name": "docusaurus-plugin-gitbook",
   "version": "0.1.1",
   "description": "Docusaurus plugin for MDX that adds support for GitBook-specific blocks",
+  "repository": {
+    "url": "https://github.com/jasny/docusaurus-plugin-gitbook"
+  },
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "files": [
