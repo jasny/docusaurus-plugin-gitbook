@@ -244,9 +244,22 @@ const remarkGitBook: Plugin<[RemarkGitBookOptions?], Root> = (
       }
     });
 
+    // Filter out entries whose startIndex falls inside another entry's range.
+    // This prevents overlapping splices when GitBook tags inside a block
+    // (e.g. {% tab %} nodes inside {% tabs %}) are also picked up by visit.
+    const topLevelNodes = nodesToProcess.filter((entry) =>
+      !nodesToProcess.some(
+        (other) =>
+          other !== entry &&
+          other.parent === entry.parent &&
+          entry.startIndex > other.startIndex &&
+          entry.startIndex <= other.endIndex
+      )
+    );
+
     // Second pass: transform collected nodes (in reverse order to preserve indices)
-    for (let i = nodesToProcess.length - 1; i >= 0; i--) {
-      const { parent, startIndex, endIndex, text } = nodesToProcess[i];
+    for (let i = topLevelNodes.length - 1; i >= 0; i--) {
+      const { parent, startIndex, endIndex, text } = topLevelNodes[i];
 
       if (!('children' in parent)) continue;
 
