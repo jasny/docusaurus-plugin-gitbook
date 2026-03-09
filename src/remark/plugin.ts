@@ -4,13 +4,14 @@
 
 import type { Root, Content } from 'mdast';
 import type { Plugin } from 'unified';
+import type { VFile } from 'vfile';
 import { unified } from 'unified';
 import remarkParse from 'remark-parse';
 import { visit } from 'unist-util-visit';
 import { parse, type GitBookBlock } from '../parser/index.js';
 import { tokenize, isTextSegment } from '../parser/tokenizer.js';
 import { getTransformer, hasTransformer } from './transformers/index.js';
-import { containsGitBookSyntax, getTextContent, nodeToMarkdown } from './utils.js';
+import { containsGitBookSyntax, createMdxJsxElement, getTextContent, nodeToMarkdown } from './utils.js';
 
 // Import all transformers to register them
 import './transformers/all.js';
@@ -24,6 +25,7 @@ export interface RemarkGitBookOptions {
 
 // All components that might be used (GitBook custom + Docusaurus built-ins)
 const ALL_GITBOOK_COMPONENTS = [
+  'GitBookCover',
   'Admonition',
   'GitBookTabs',
   'GitBookTab',
@@ -209,7 +211,7 @@ const remarkGitBook: Plugin<[RemarkGitBookOptions?], Root> = (
 ) => {
   const { blocks: enabledBlocks } = options;
 
-  return (tree: Root) => {
+  return (tree: Root, vfile: VFile) => {
     // Initialize component tracking for this document
     usedComponents = new Set<string>();
 
@@ -294,6 +296,27 @@ const remarkGitBook: Plugin<[RemarkGitBookOptions?], Root> = (
           deleteCount,
           ...newNodes
         );
+      }
+    }
+
+    // Inject cover image if specified in frontmatter
+    const frontmatter = (vfile.data as Record<string, unknown>).frontMatter as
+      | Record<string, unknown>
+      | undefined;
+    if (frontmatter?.cover) {
+      const cover = frontmatter.cover;
+      const attrs: Record<string, string> = {};
+      if (typeof cover === 'string') {
+        attrs.dark = cover;
+        attrs.light = cover;
+      } else if (typeof cover === 'object' && cover !== null) {
+        const c = cover as Record<string, string>;
+        if (c.dark) attrs.dark = c.dark;
+        if (c.light) attrs.light = c.light;
+      }
+      if (Object.keys(attrs).length > 0) {
+        const coverNode = createMdxJsxElement('GitBookCover', attrs);
+        tree.children.unshift(coverNode as Content);
       }
     }
 

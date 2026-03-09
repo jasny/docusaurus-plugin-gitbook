@@ -1,6 +1,10 @@
 import type { LoadContext, Plugin } from '@docusaurus/types';
+import * as fs from 'fs';
 import * as path from 'path';
 import { fileURLToPath } from 'url';
+import { createRequire } from 'module';
+
+const _require = createRequire(import.meta.url);
 
 // Re-export remark plugin
 export { remarkGitBook } from './remark/index.js';
@@ -58,7 +62,7 @@ const __dirname = path.dirname(__filename);
  * Docusaurus plugin for GitBook syntax support
  */
 export default function pluginGitbook(
-  _context: LoadContext,
+  context: LoadContext,
   options: PluginOptions = {}
 ): Plugin {
   const { blocks: _blocks, classNamePrefix: _classNamePrefix } = options;
@@ -76,6 +80,37 @@ export default function pluginGitbook(
 
     getClientModules() {
       return [path.resolve(__dirname, './theme/gitbook.css')];
+    },
+
+    configureWebpack(_config, isServer) {
+      if (isServer) return {};
+
+      // Look for .gitbook/assets in common locations relative to siteDir
+      const candidates = [
+        path.resolve(context.siteDir, '../.gitbook/assets'),
+        path.resolve(context.siteDir, '../docs/.gitbook/assets'),
+        path.resolve(context.siteDir, '.gitbook/assets'),
+        path.resolve(context.siteDir, 'docs/.gitbook/assets'),
+      ];
+
+      const gitbookAssetsDir = candidates.find((d) => fs.existsSync(d));
+      if (!gitbookAssetsDir) return {};
+
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const CopyPlugin = _require('copy-webpack-plugin') as any;
+
+      return {
+        plugins: [
+          new CopyPlugin({
+            patterns: [
+              {
+                from: gitbookAssetsDir,
+                to: path.join('.gitbook', 'assets'),
+              },
+            ],
+          }),
+        ],
+      };
     },
   };
 }

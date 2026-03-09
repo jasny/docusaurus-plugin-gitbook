@@ -1,0 +1,25 @@
+.cover {
+  margin-bottom: 2rem;
+}
+
+.cover img {
+  max-width: 100%;
+}
+
+/* Light mode: show light image, hide dark image */
+.lightModeImage {
+  display: block;
+}
+
+.darkModeImage {
+  display: none;
+}
+
+/* Dark mode: show dark image, hide light image */
+[data-theme='dark'] .lightModeImage {
+  display: none;
+}
+
+[data-theme='dark'] .darkModeImage {
+  display: block;
+}

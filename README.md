@@ -8,6 +8,7 @@ A [Docusaurus plugin](https://docusaurus.io/docs/advanced/plugins) that adds sup
 
 | Block | Description | Docs |
 |-------|-------------|------|
+| Cover | Page cover image from frontmatter (dark/light mode variants) | [View](https://www.jasny.net/docusaurus-plugin-gitbook/blocks/cover) |
 | Hints | Info, warning, danger, and success callouts | [View](https://www.jasny.net/docusaurus-plugin-gitbook/blocks/hints) |
 | Tabs | Tabbed content panels | [View](https://www.jasny.net/docusaurus-plugin-gitbook/blocks/tabs) |
 | Stepper | Numbered step-by-step guides | [View](https://www.jasny.net/docusaurus-plugin-gitbook/blocks/stepper) |
@@ -68,6 +69,29 @@ export default {
 ```
 
 ## Usage
+
+### Cover
+
+Page cover images are rendered automatically from the `cover` frontmatter field GitBook adds to your pages:
+
+```markdown
+---
+cover: .gitbook/assets/banner.png
+coverY: 0
+---
+```
+
+For dark/light mode variants:
+
+```markdown
+---
+cover:
+  dark: .gitbook/assets/banner-dark.png
+  light: .gitbook/assets/banner-light.png
+---
+```
+
+The plugin automatically copies `.gitbook/assets` to your build output so image paths work without any extra configuration.
 
 ### Hint
 

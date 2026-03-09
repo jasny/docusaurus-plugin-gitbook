@@ -145,3 +145,11 @@ export interface OpenAPIProps {
   path: string;
   method: string;
 }
+
+/**
+ * Cover component props
+ */
+export interface CoverProps {
+  dark?: string;
+  light?: string;
+}

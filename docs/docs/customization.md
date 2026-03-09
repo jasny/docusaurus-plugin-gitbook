@@ -117,4 +117,4 @@ For deeper customization, you can [swizzle](https://docusaurus.io/docs/swizzling
 npx docusaurus swizzle docusaurus-plugin-gitbook GitBookTabs
 ```
 
-Available components: `GitBookTabs`, `GitBookTab`, `GitBookStepper`, `GitBookStep`, `GitBookColumns`, `GitBookColumn`, `GitBookUpdates`, `GitBookUpdate`, `GitBookCodeBlock`, `GitBookEmbed`, `GitBookFile`, `GitBookButton`, `GitBookCards`, `GitBookCard`, `FAIcon`.
+Available components: `GitBookCover`, `GitBookTabs`, `GitBookTab`, `GitBookStepper`, `GitBookStep`, `GitBookColumns`, `GitBookColumn`, `GitBookUpdates`, `GitBookUpdate`, `GitBookCodeBlock`, `GitBookEmbed`, `GitBookFile`, `GitBookButton`, `GitBookCards`, `GitBookCard`, `FAIcon`.
