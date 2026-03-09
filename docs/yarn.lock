@@ -3794,7 +3794,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/mdast@npm:^4.0.0, @types/mdast@npm:^4.0.2":
+"@types/mdast@npm:^4.0.0, @types/mdast@npm:^4.0.2, @types/mdast@npm:^4.0.4":
   version: 4.0.4
   resolution: "@types/mdast@npm:4.0.4"
   dependencies:
@@ -5810,11 +5810,24 @@ __metadata:
   languageName: node
   linkType: hard
 
-"docusaurus-plugin-gitbook@link:..::locator=gitbook-plugin-example%40workspace%3A.":
-  version: 0.0.0-use.local
-  resolution: "docusaurus-plugin-gitbook@link:..::locator=gitbook-plugin-example%40workspace%3A."
+"docusaurus-plugin-gitbook@file:..::locator=gitbook-plugin-example%40workspace%3A.":
+  version: 0.1.1
+  resolution: "docusaurus-plugin-gitbook@file:..#..::hash=a265bd&locator=gitbook-plugin-example%40workspace%3A."
+  dependencies:
+    "@types/mdast": "npm:^4.0.4"
+    mdast-util-mdx-jsx: "npm:^3.2.0"
+    remark-parse: "npm:^11.0.0"
+    unified: "npm:^11.0.0"
+    unist-util-visit: "npm:^5.0.0"
+  peerDependencies:
+    "@docusaurus/core": ^3.0.0
+    docusaurus-theme-openapi-docs: ^4.0.0 || ^3.0.0
+  peerDependenciesMeta:
+    docusaurus-theme-openapi-docs:
+      optional: true
+  checksum: 10c0/f46a158a75bc4c052941d6ac2fc1c07f073d3e2da788a497c04ba7cacff12e1103e4fcefb8fbafd5b24d931fa4276a49151a74ab8167bac22882017ae4775ad9
   languageName: node
-  linkType: soft
+  linkType: hard
 
 "dom-converter@npm:^0.2.0":
   version: 0.2.0
@@ -6713,7 +6726,7 @@ __metadata:
     "@docusaurus/types": "npm:^3.7.0"
     "@mdx-js/react": "npm:^3.0.0"
     clsx: "npm:^2.1.0"
-    docusaurus-plugin-gitbook: "link:.."
+    docusaurus-plugin-gitbook: "file:.."
     prism-react-renderer: "npm:^2.3.1"
     react: "npm:^18.2.0"
     react-dom: "npm:^18.2.0"
@@ -8250,7 +8263,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mdast-util-mdx-jsx@npm:^3.0.0":
+"mdast-util-mdx-jsx@npm:^3.0.0, mdast-util-mdx-jsx@npm:^3.2.0":
   version: 3.2.0
   resolution: "mdast-util-mdx-jsx@npm:3.2.0"
   dependencies:
