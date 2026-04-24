@@ -10,7 +10,7 @@ Page covers are rendered automatically from the `cover` frontmatter field that G
 
 ```markdown
 ---
-cover: .gitbook/assets/banner.png
+cover: /assets/banner.png
 coverY: 0
 ---
 
@@ -26,8 +26,8 @@ GitBook supports separate images for dark and light mode:
 ```markdown
 ---
 cover:
-  dark: .gitbook/assets/banner-dark.png
-  light: .gitbook/assets/banner-light.png
+  dark: /assets/banner-dark.png
+  light: /assets/banner-light.png
 ---
 
 # My Page
@@ -37,7 +37,9 @@ The correct image is shown automatically based on the user's selected color sche
 
 ## Asset files
 
-The plugin automatically copies `.gitbook/assets` to your Docusaurus build output so that image paths like `.gitbook/assets/banner.png` resolve correctly without any extra configuration.
+The plugin copies `.gitbook/assets` to `/assets` in your Docusaurus build output.
+Any `.gitbook/assets/...` reference is rewritten to `/assets/...` automatically.
+If a GitBook asset would overwrite an existing file in `static/assets`, the build fails with a conflict error.
 
 The plugin searches for the assets directory in the following locations relative to your `siteDir`:
 

@@ -49,6 +49,47 @@ const ALL_GITBOOK_COMPONENTS = [
 
 // Set to track which components are used in the current document
 let usedComponents: Set<string>;
+const GITBOOK_ASSET_PREFIX = /^\.?\/?\.gitbook\/assets(?=\/|$)/;
+
+function rewriteGitBookAssetUrl(value: string): string {
+  const match = value.match(/[?#]/);
+  const splitIndex = match ? match.index : -1;
+  const pathPart = splitIndex === undefined || splitIndex < 0
+    ? value
+    : value.slice(0, splitIndex);
+  const suffix = splitIndex === undefined || splitIndex < 0 ? '' : value.slice(splitIndex);
+
+  if (!GITBOOK_ASSET_PREFIX.test(pathPart)) {
+    return value;
+  }
+
+  const rewrittenPath = pathPart.replace(GITBOOK_ASSET_PREFIX, '/assets');
+  return `${rewrittenPath}${suffix}`;
+}
+
+function rewriteGitBookAssetUrls(tree: Root): void {
+  visit(tree, (node) => {
+    const maybeUrlNode = node as { url?: unknown };
+    if (typeof maybeUrlNode.url === 'string') {
+      maybeUrlNode.url = rewriteGitBookAssetUrl(maybeUrlNode.url);
+    }
+
+    const maybeMdxNode = node as { attributes?: unknown };
+    if (!Array.isArray(maybeMdxNode.attributes)) {
+      return;
+    }
+
+    for (const attribute of maybeMdxNode.attributes) {
+      const mdxAttribute = attribute as { type?: unknown; value?: unknown };
+      if (
+        mdxAttribute.type === 'mdxJsxAttribute' &&
+        typeof mdxAttribute.value === 'string'
+      ) {
+        mdxAttribute.value = rewriteGitBookAssetUrl(mdxAttribute.value);
+      }
+    }
+  });
+}
 
 /**
  * Create an mdxjsEsm node for imports
@@ -319,6 +360,8 @@ const remarkGitBook: Plugin<[RemarkGitBookOptions?], Root> = (
         tree.children.unshift(coverNode as Content);
       }
     }
+
+    rewriteGitBookAssetUrls(tree);
 
     // Add imports for all GitBook components at the beginning of the document
     // This ensures components from both remark and rehype transformations are available

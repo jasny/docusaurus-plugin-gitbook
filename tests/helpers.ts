@@ -17,13 +17,16 @@ import rehypeGitBook from '../src/rehype/plugin.js';
  */
 export function remarkParsed(
   markdown: string,
-  options?: RemarkGitBookOptions
+  options?: RemarkGitBookOptions,
+  fileData?: Record<string, unknown>
 ): MdastRoot {
   const processor = unified()
     .use(remarkParse)
     .use(remarkGitBook, options ?? {});
   const tree = processor.parse(markdown);
-  processor.runSync(tree);
+  processor.runSync(tree, {
+    data: fileData ?? {},
+  });
   return tree as MdastRoot;
 }
 

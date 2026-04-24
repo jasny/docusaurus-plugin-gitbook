@@ -57,6 +57,70 @@ export interface PluginOptions {
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+const GITBOOK_ASSETS_OUTPUT_DIR = 'assets';
+
+function listFilesRecursive(dir: string): string[] {
+  const entries = fs.readdirSync(dir, { withFileTypes: true });
+  const files: string[] = [];
+
+  for (const entry of entries) {
+    const fullPath = path.join(dir, entry.name);
+    if (entry.isDirectory()) {
+      files.push(...listFilesRecursive(fullPath));
+    } else if (entry.isFile()) {
+      files.push(fullPath);
+    }
+  }
+
+  return files;
+}
+
+function assertNoAssetConflicts(
+  context: LoadContext,
+  gitbookAssetsDir: string
+): void {
+  const siteConfig = context.siteConfig as
+    | { staticDirectories?: string[] }
+    | undefined;
+  const staticDirectories = siteConfig?.staticDirectories?.length
+    ? siteConfig.staticDirectories
+    : ['static'];
+
+  const sourceFiles = listFilesRecursive(gitbookAssetsDir);
+  if (sourceFiles.length === 0) return;
+
+  const conflictingPaths: string[] = [];
+  for (const sourceFile of sourceFiles) {
+    const relativeFromAssets = path.relative(gitbookAssetsDir, sourceFile);
+    const relativeDestination = path.join(
+      GITBOOK_ASSETS_OUTPUT_DIR,
+      relativeFromAssets
+    );
+
+    for (const staticDirectory of staticDirectories) {
+      const absoluteStaticDirectory = path.resolve(context.siteDir, staticDirectory);
+      const existingTarget = path.join(absoluteStaticDirectory, relativeDestination);
+
+      if (fs.existsSync(existingTarget)) {
+        conflictingPaths.push(relativeDestination);
+        break;
+      }
+    }
+  }
+
+  if (conflictingPaths.length === 0) return;
+
+  const uniqConflicts = [...new Set(conflictingPaths)].sort();
+  const preview = uniqConflicts
+    .slice(0, 10)
+    .map((p) => `- ${p}`)
+    .join('\n');
+
+  throw new Error(
+    `GitBook asset conflict detected. The plugin copies .gitbook/assets to /${GITBOOK_ASSETS_OUTPUT_DIR}, but these files already exist in static directories:\n${preview}\n` +
+      `${uniqConflicts.length > 10 ? `...and ${uniqConflicts.length - 10} more.` : ''}`
+  );
+}
 
 /**
  * Docusaurus plugin for GitBook syntax support
@@ -95,6 +159,7 @@ export default function pluginGitbook(
 
       const gitbookAssetsDir = candidates.find((d) => fs.existsSync(d));
       if (!gitbookAssetsDir) return {};
+      assertNoAssetConflicts(context, gitbookAssetsDir);
 
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const CopyPlugin = _require('copy-webpack-plugin') as any;
@@ -105,7 +170,7 @@ export default function pluginGitbook(
             patterns: [
               {
                 from: gitbookAssetsDir,
-                to: path.join('.gitbook', 'assets'),
+                to: GITBOOK_ASSETS_OUTPUT_DIR,
               },
             ],
           }),

@@ -76,7 +76,7 @@ Page cover images are rendered automatically from the `cover` frontmatter field 
 
 ```markdown
 ---
-cover: .gitbook/assets/banner.png
+cover: /assets/banner.png
 coverY: 0
 ---
 ```
@@ -86,12 +86,14 @@ For dark/light mode variants:
 ```markdown
 ---
 cover:
-  dark: .gitbook/assets/banner-dark.png
-  light: .gitbook/assets/banner-light.png
+  dark: /assets/banner-dark.png
+  light: /assets/banner-light.png
 ---
 ```
 
-The plugin automatically copies `.gitbook/assets` to your build output so image paths work without any extra configuration.
+The plugin copies `.gitbook/assets` to `/assets` in your build output.
+References to `.gitbook/assets/...` are automatically rewritten to `/assets/...` during processing.
+If a file would overwrite an existing file under `static/assets`, the build fails with a clear conflict error.
 
 ### Hint
 
